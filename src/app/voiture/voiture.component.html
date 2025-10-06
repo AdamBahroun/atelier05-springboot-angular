@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                @if (voitures.length!=0) {
+                <thead>
+                   <tr> <th>N°</th><th>Id</th><th>Nom</th> <th>Prix</th> <th>Date Création</th> </tr>
+                </thead>}
+                @for(voiture of voitures;track voiture.idvoiture; let i=$index;let nbr=$count; let first=$first; let last=$last){
+                @if(first){ <h1>Nombre : {{nbr}}</h1>}
+                <tbody>
+                <tr>
+                    <td>{{i+1}}</td>
+                    <td>{{voiture.idvoiture}}</td>
+                    <td>{{voiture.nomvoiture}}</td>
+                    <td>{{voiture.prixvoiture}}</td>
+                    <td>{{voiture.dateCreation | date:'dd/MM/yyyy'}}</td>
+                    <td><a class="btn btn-danger" (click)="supprimervoiture(voiture)">Supprimer</a></td>
+                    <td><a class="btn btn-success" [routerLink]="['/updatevoiture',voiture.idvoiture]">Modifier</a></td>
+
+                </tr>
+                </tbody>
+                }
+                @empty {<h1>Aucun voiture trouvé !</h1>}
+            </table>
+            
+        </div>
+    </div>
+</div>

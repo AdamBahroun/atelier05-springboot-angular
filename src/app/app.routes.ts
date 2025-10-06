@@ -1,3 +1,14 @@
 import { Routes } from '@angular/router';
+import { voituresComponent } from './voiture/voiture.component';
+import { AddvoituresComponent } from './add-voiture/add-voiture.component';
+import { UpdatevoitureComponent } from './update-voiture/update-voiture.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    {path: "voitures", component : voituresComponent},
+    {path: "add-voitures", component : AddvoituresComponent},
+    {path: "updatevoiture/:id", component: UpdatevoitureComponent},
+    {path: "", redirectTo: "voitures", pathMatch: "full"}
+    
+
+
+];

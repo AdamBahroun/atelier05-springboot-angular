@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { voiture } from '../model/voiture.model';
+import { Voiture } from '../model/voiture.model';
 import { CommonModule } from '@angular/common';
 import { voitureService } from '../services/voiture.service';
 import { RouterLink } from '@angular/router';
@@ -12,12 +12,12 @@ import { RouterLink } from '@angular/router';
   templateUrl: './voiture.component.html',
 })
 export class voituresComponent {
-voitures :voiture[];
+voitures :Voiture[];
 constructor(private voitureService: voitureService ) {
   this.voitures=[]
 
  }
- supprimervoiture(prod :voiture){
+ supprimervoiture(prod :Voiture){
  let conf = confirm("Etes-vous sûr ?");
 if (conf)
 this.voitureService.supprimervoiture(prod);

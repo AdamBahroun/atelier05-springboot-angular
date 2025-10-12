@@ -1,6 +1,6 @@
 <div class="container">
     <div>
-        <h2>Ajouter un voiture :</h2>
+        <h2>Ajouter une voiture :</h2>
     </div>
     <form>
         <div class="col-sm-2 col-md-2 col-lg-2">
@@ -19,9 +19,19 @@
             <label>Date création</label>
             <input type="date" [(ngModel)]="newvoiture.dateCreation" name="dateCreation" class="form-control">
         </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Marque</label>
+            <select class="form-control form-control-lg" id="idmarque" name="idmarque" [(ngModel)]="newIdMarque">
+                @for(cat of marques; track cat.idmarque){
+                <option [value]="cat.idmarque"> {{cat.nommarque}} </option>
+                }
+            </select>
+        </div>
         <div class="mt-2">
             <button type="submit" (click)="addvoiture()" class="btn btn-success">Ajouter</button>
-            <div><h3>{{message}}</h3></div>
+            <div>
+                <h3>{{message}}</h3>
+            </div>
         </div>
     </form>
 </div>

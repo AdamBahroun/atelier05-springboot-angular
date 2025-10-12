@@ -3,7 +3,7 @@
         <h2>Modifier un voiture :</h2>
     </div>
     <form>
-        <div  class="col-sm-2 col-md-2 col-lg-2">
+        <div class="col-sm-2 col-md-2 col-lg-2">
             <label>ID voiture</label>
             <input type="text" [(ngModel)]="currentvoiture.idvoiture" name="idvoiture" class="form-control" readonly>
         </div>
@@ -20,7 +20,15 @@
             <input type="date" [ngModel]="currentvoiture.dateCreation | date: 'yyyy-MM-dd'"
                 (ngModelChange)=" currentvoiture.dateCreation= $event" name="dateCreation" class="form-control">
         </div>
-        <div class="mt-2">
+       <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Marque</label>
+            <select class="form-control form-control-lg" id="idmarque" name="idmarque" [(ngModel)]="updatedMarqueId" >
+                @for(marque of marques; track marque.idmarque)
+                {
+                <option [value]="marque.idmarque"> {{marque.nommarque}} </option>
+                }
+            </select>
+
             <button type="submit" (click)="updatevoiture()" class="btn btn-success">Ajouter</button>
         </div>
 

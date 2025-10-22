@@ -1,0 +1,59 @@
+<div class="container">
+  <!-- Barre de recherche -->
+  <form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2 mt-2">
+      <label>Nom voiture :</label>
+      <input
+        #searchInput
+        class="form-control"
+        (keyup)="onKeyUp(searchInput.value)"
+        placeholder="Tapez un nom de voiture"
+      />
+    </div>
+  </form>
+
+  <!-- Tableau d'affichage -->
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Date Création</th>
+            <th>Marque</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let voiture of voitures; trackBy: trackById">
+            <td>{{ voiture.idvoiture }}</td>
+            <td>{{ voiture.nomvoiture }}</td>
+            <td>{{ voiture.prixvoiture }}</td>
+            <td>{{ voiture.dateCreation | date: 'dd/MM/yyyy' }}</td>
+            <td *ngIf="voiture.marque; else pasDeMarque">
+              {{ voiture.marque.nommarque }}
+            </td>
+            <ng-template #pasDeMarque>
+              <td>PAS DE marque</td>
+            </ng-template>
+
+            <td>
+              <button class="btn btn-danger" (click)="supprimervoiture(voiture)">
+                Supprimer
+              </button>
+              <a
+                class="btn btn-success"
+                [routerLink]="['/updatevoiture', voiture.idvoiture]"
+              >
+                Modifier
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

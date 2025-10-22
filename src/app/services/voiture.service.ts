@@ -8,7 +8,9 @@ import { Marque } from '../model/marque.model';
 export class voitureService {
   marques: Marque[];
   voitures: Voiture[];
+  voitureRecherche: Voiture[];
   constructor() {
+    this.voitureRecherche=[];
     this.marques = [
       { idmarque: 1, nommarque: "Volkswagen" },
       { idmarque: 2, nommarque: "Ferrari" },
@@ -29,7 +31,8 @@ export class voitureService {
       { idmarque: 17, nommarque: "Mazda" },
       { idmarque: 18, nommarque: "Citroën" },
       { idmarque: 19, nommarque: "Volvo" },
-      { idmarque: 20, nommarque: "Jaguar" }
+      { idmarque: 20, nommarque: "Jaguar" },
+      { idmarque: 21, nommarque: "Haval" }
     ];
 
     this.voitures = [
@@ -69,5 +72,15 @@ export class voitureService {
   consulterMarque(id: number): Marque {
     return this.marques.find(cat => cat.idmarque == id)!;
   }
+  rechercherParMarque(idmarque: number):Voiture[] {
+this.voitureRecherche=[];
+this.voitures.forEach((cur,index)=>{
+  if (idmarque == cur.marque?.idmarque) {
+    console.log("cur"+cur);
+    this.voitureRecherche.push(cur);
+  }})
+  return this.voitureRecherche;
+}
+
 }
 

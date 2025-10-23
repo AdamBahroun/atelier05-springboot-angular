@@ -81,6 +81,11 @@ this.voitures.forEach((cur,index)=>{
   }})
   return this.voitureRecherche;
 }
-
+rechercherParNom(nom: string): Voiture[] {
+  this.voitureRecherche=[];
+    return this.voitures.filter(j => 
+      j.nomvoiture?.toLowerCase().includes(nom.toLowerCase())
+    );
+  }
 }
 
